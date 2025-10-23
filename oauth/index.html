@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Trinky OAuth Redirect</title>
+    <style>
+      html, body { height: 100%; margin: 0; font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:#0b0b0c; color:#fff; }
+      .wrap { display:flex; align-items:center; justify-content:center; height:100%; padding:24px; text-align:center; }
+      .card { max-width:640px; width:100%; background:rgba(255,255,255,0.06); border-radius:16px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+      code { background:rgba(255,255,255,.12); padding:2px 6px; border-radius:6px; }
+      a { color:#7ed0ff; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>Completing sign‑in…</h1>
+        <p>If you are not redirected automatically, tap the button below.</p>
+        <p><a id="openApp" href="#">Open Trinky</a></p>
+        <p id="msg"></p>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var code = params.get('code');
+        var state = params.get('state') || '';
+        var error = params.get('error');
+        var target;
+
+        if (error) {
+          document.getElementById('msg').textContent = 'Error: ' + error;
+          return;
+        }
+
+        if (code) {
+          target = 'trinky://oauth?code=' + encodeURIComponent(code) + (state ? ('&state=' + encodeURIComponent(state)) : '');
+          document.getElementById('openApp').setAttribute('href', target);
+          window.location.replace(target);
+        } else {
+          document.getElementById('msg').innerHTML = 'Missing <code>code</code> parameter';
+        }
+      })();
+    </script>
+  </body>
+  </html>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Trinky OAuth Redirect</title>
+    <style>
+      html, body { height: 100%; margin: 0; font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; background:#0b0b0c; color:#fff; }
+      .wrap { display:flex; align-items:center; justify-content:center; height:100%; padding:24px; text-align:center; }
+      .card { max-width:640px; width:100%; background:rgba(255,255,255,0.06); border-radius:16px; padding:24px; box-shadow:0 10px 30px rgba(0,0,0,.35); }
+      code { background:rgba(255,255,255,.12); padding:2px 6px; border-radius:6px; }
+      a { color:#7ed0ff; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>Completing sign‑in…</h1>
+        <p>If you are not redirected automatically, tap the button below.</p>
+        <p><a id="openApp" href="#">Open Trinky</a></p>
+        <p id="msg"></p>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var code = params.get('code');
+        var state = params.get('state') || '';
+        var error = params.get('error');
+        var target;
+
+        if (error) {
+          document.getElementById('msg').textContent = 'Error: ' + error;
+          return;
+        }
+
+        if (code) {
+          target = 'trinky://oauth?code=' + encodeURIComponent(code) + (state ? ('&state=' + encodeURIComponent(state)) : '');
+          document.getElementById('openApp').setAttribute('href', target);
+          window.location.replace(target);
+        } else {
+          document.getElementById('msg').innerHTML = 'Missing <code>code</code> parameter';
+        }
+      })();
+    </script>
+  </body>
+  </html>
+
+
